@@ -7,6 +7,7 @@ let filePath = path.join(os.homedir(), 'JapaneseExport.csv')
 
 let inputStream = fs.createReadStream(filePath, 'utf8')
 
+var newWords = []
 var meaning = 0
 var ex = 0
 var ignore = false
@@ -44,16 +45,15 @@ inputStream.pipe(CsvReadableStream({
     }
   } else if (!first && !ignore && !empty) {
     if (row) {
-      let newWord = {
+      newWords.push({
         word: row[0],
         meaning: row[meaning],
         ex: row[ex]
-      }
-
-      console.log(`${JSON.stringify(newWord)}`)
+      })
     }
   } else {
     first = false
   }
-
+}).on('end', () => {
+  fs.writeFile('src/words.json', JSON.stringify(newWords), err => err ? console.log(err) : null)
 })
