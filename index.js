@@ -29,26 +29,21 @@ inputStream.pipe(CsvReadableStream({
 
   if (empty && Object.keys(row).length) {
     for (let header of Object.keys(row)) {
-      if (row[header] == 'Particle' || row[header] == 'Pattern') {
+      if (row[header] == 'Particle' || row[header] == 'Pattern' || row[header] == 'Ending' || row[header] == 'Adverbial' || row[header] == 'Temporal' || row[header] == 'Counter' || row[header] == 'Conj') {
         ignore = true
         empty = false
       } else if(row[header] === 'Meaning') {
-        console.log(`i: ${header}  r[header]: ${row[header]}`)
         meaning = header
         empty = false
         first = true
       } else if(row[header] === 'Ex') {
-        console.log(`i: ${header}  r[header]: ${row[header]}`)
         ex = header
         empty = false
         first = true
       }
     }
   } else if (!first && !ignore && !empty) {
-    console.log(`m:${meaning} e:${ex}`)
     if (row) {
-      // console.log(`${JSON.stringify(row)}`)
-      // console.log(` word: ${row[0]} ${meaning}: ${row[meaning]}  ${ex}: ${row[ex]}`)
       let newWord = {
         word: row[0],
         meaning: row[meaning],
