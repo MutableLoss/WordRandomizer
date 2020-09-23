@@ -1,12 +1,10 @@
-(function() {
+  (function() {
   window.wordRandomizer = window.wordRandomizer || {};
-  window.words = chrome.runtime.getURL('words.json')
+  window.words = chrome.runtime.getURL('words.json');
 
   wordRandomizer.WordList = function() {
-    this.total = 0;
     this.wordList = [];
-    this.setWord = {};
-    this.conversationList = [];
+    this.word = {};
   };
 
   wordRandomizer.WordList.prototype = {
@@ -20,16 +18,14 @@
     },
 
     setWord: function(cb) {
-      if (word) {
-        this.setWord = word
-      } else {
-        this.setWord = this.wordList[Math.floor(Math.random() * wordList.length) + 1]
+      if (this.wordList.length) {
+        this.word = this.wordList[Math.floor(Math.random() * this.wordList.length) + 1]
       }
-      cb(this.setWord)
+      cb(this.word)
     },
 
     getWord: function() {
-      this.setWord
+      this.word
     }
   };
 
