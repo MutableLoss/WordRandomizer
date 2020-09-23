@@ -23,8 +23,10 @@
 
   chrome.runtime.onMessage.addListener(function(message) {
     if ('action' in message && message.action == 'update-word') {
-      wordSet = message.word;
-      createBlock();
+      if (Object.keys(message).includes('word')) {
+        wordSet = message.word;
+        createBlock();
+      }
     }
   })
 })();
