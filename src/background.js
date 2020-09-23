@@ -2,9 +2,9 @@
   const pollTime = 3600000;
   const WordList = new wordRandomizer.WordList;
 
-  function checkWords(cb = null) {
-    WordList.initList(function(wordList) {
-      WordList.setWord(function(word) {
+  function checkWords() {
+    WordList.initList(function() {
+      WordList.setWord(function() {
         messageNotification();
       });
     });
@@ -39,7 +39,7 @@
     });
   }
 
-  checkTime = setInterval(checkWords, pollTime);
+  checkTime = setInterval(checkWords(), pollTime);
 
   checkWords();
 
