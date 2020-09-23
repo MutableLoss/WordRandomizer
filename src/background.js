@@ -4,13 +4,10 @@
 
   function checkWords(cb = null) {
     WordList.initList(function(wordList) {
-      WordList.setWord(function(setWord) {
-        console.log(setWord)
-      });
+      WordList.setWord();
     });
   }
 
-  
   function badgeUpdate(total) {
     if(total !== 0) {
       chrome.browserAction.setBadgeText({text: total.toString()});
@@ -43,9 +40,17 @@
 
   checkWords();
 
-  // sync lookup on popup
-  // TODO refactor to single screen scrape
-  chrome.runtime.onMessage.addListener(function() {
-    checkWords();
-  });
+
+  chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    var wordSet = undefined;
+    if(request.name === 'get-word') {
+      chrome.tabs.query({ active: true }, function(tabs) {
+        var wordSet = WordList.word;
+        console.log(`wordGet: ${wordSet.word}`);
+        sendResponse({ word: wordSet });
+
+        chrome.runtime.sendMessage({ word: wordSet }, function(response) {});
+      });
+    }
+  })
 })();
