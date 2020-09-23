@@ -10,23 +10,27 @@
   };
 
   wordRandomizer.WordList.prototype = {
-    initList: cb => {
+    initList: function(cb) {
       fetch(window.words)
       .then(res => res.json())
-      .then(listOutput => {
-        this.wordList = listOutput
-        cb(listOutput)
-      }); 
+      .then(out => {
+        this.wordList = out
+        cb(out)
+      });
     },
-    setWord: word => {
-      if(word) {
+
+    setWord: function(cb) {
+      if (word) {
         this.setWord = word
       } else {
         this.setWord = this.wordList[Math.floor(Math.random() * wordList.length) + 1]
       }
-      console.log(`Set: ${this.setWord}`)
+      cb(this.setWord)
     },
-    getWord: () => this.setWord
+
+    getWord: function() {
+      this.setWord
+    }
   };
 
   // make single instance for extension
