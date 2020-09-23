@@ -10,12 +10,12 @@ let filePath = path.join(os.homedir(), process.env.WORD_FILE)
 
 let inputStream = fs.createReadStream(filePath, 'utf8')
 
-var newWords = []
-var meaning = 0
-var ex = 0
-var ignore = false
-var first = false
-var empty = true
+const newWords = []
+let meaning = 0
+let ex = 0
+let ignore = false
+let first = false
+let empty = true
 
 const ignoredHeaders = [
   'Particle',
