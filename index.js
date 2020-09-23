@@ -1,9 +1,12 @@
+const dotenv = require('dotenv')
+dotenv.config()
+
 const CsvReadableStream = require('csv-parser')
 const fs = require('fs')
 const os = require('os')
 const path = require('path')
 
-let filePath = path.join(os.homedir(), 'JapaneseExport.csv')
+let filePath = path.join(os.homedir(), process.env.WORD_FILE)
 
 let inputStream = fs.createReadStream(filePath, 'utf8')
 
