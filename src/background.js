@@ -3,8 +3,10 @@
   const WordList = new wordRandomizer.WordList;
 
   function checkWords(cb = null) {
-    WordList.initList(words => {
-      WordList.setWord(words[Math.floor(Math.random() * words.length) + 1])
+    WordList.initList(function(wordList) {
+      WordList.setWord(function(setWord) {
+        console.log(setWord)
+      });
     });
   }
 
@@ -37,7 +39,7 @@
     });
   }
 
-  checkTime = setInterval(checkWords, pollTime);
+  // checkTime = setInterval(checkWords, pollTime);
 
   checkWords();
 
