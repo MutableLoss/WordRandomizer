@@ -16,7 +16,6 @@
     answerBlock.innerHTML = wordSet.meaning;
 
     wordDiv.append(wordBlock);
-    wordDiv.append(answerBlock);
 
     if (wordSet.ex != '') {
       let exampleBlock = document.createElement('span');
@@ -25,6 +24,8 @@
 
       wordDiv.append(exampleBlock);
     }
+
+    wordDiv.append(answerBlock);
   }
 
   chrome.runtime.sendMessage({ name: 'clear-badge' }, function(response) {});
