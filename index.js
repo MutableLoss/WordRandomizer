@@ -61,7 +61,7 @@ inputStream.pipe(CsvReadableStream({
       newWords.push({
         word: row[0],
         meaning: row[meaning],
-        ex: row[ex]
+        example: row[ex]
       })
     }
   } else {
