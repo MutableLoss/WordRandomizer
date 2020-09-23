@@ -12,10 +12,7 @@
     initList: cb => {
       fetch(window.words)
       .then(res => res.json())
-      .then(out => {
-          cb(this.wordList);
-        });
-      ) 
+      .then(out => cb(out)); 
     }
   };
 
