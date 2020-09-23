@@ -17,7 +17,7 @@
 
     wordDiv.append(wordBlock);
 
-    if (wordSet.ex != '') {
+    if (wordSet.ex && wordSet.ex != '') {
       let exampleBlock = document.createElement('span');
       exampleBlock.setAttribute('class', 'word-block word-example');
       exampleBlock.innerHTML = wordSet.example;
