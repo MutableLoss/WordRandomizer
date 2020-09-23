@@ -1,11 +1,10 @@
 (function() {
-  const pollTime = 300000;
-
+  const pollTime = 3600000;
   const WordList = new wordRandomizer.WordList;
 
   function checkWords(cb = null) {
-    WordList.initList(page => {
-      
+    WordList.initList(words => {
+      WordList.setWord(words[Math.floor(Math.random() * words.length) + 1])
     });
   }
 
