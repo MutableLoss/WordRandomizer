@@ -14,6 +14,16 @@ var ignore = false
 var first = false
 var empty = true
 
+const ignoredHeaders = [
+  'Particle',
+  'Pattern',
+  'Ending',
+  'Temporal',
+  'Counter',
+  'Conj',
+  'Kanji'
+]
+
 inputStream.pipe(CsvReadableStream({ 
   parseNumbers: true,
   parseBooleans: true,
@@ -30,7 +40,7 @@ inputStream.pipe(CsvReadableStream({
 
   if (empty && Object.keys(row).length) {
     for (let header of Object.keys(row)) {
-      if (row[header] == 'Particle' || row[header] == 'Pattern' || row[header] == 'Ending' || row[header] == 'Adverbial' || row[header] == 'Temporal' || row[header] == 'Counter' || row[header] == 'Conj') {
+      if (!ignoredHeaders.includes(row[header])) {
         ignore = true
         empty = false
       } else if(row[header] === 'Meaning') {
