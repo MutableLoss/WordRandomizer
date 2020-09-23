@@ -19,7 +19,9 @@
     wordDiv.append(answerBlock);
   }
 
+  chrome.runtime.sendMessage({ name: 'clear-badge' }, function(response) {});
   chrome.runtime.sendMessage({ name: 'get-word' }, function(response) {});
+
 
   chrome.runtime.onMessage.addListener(function(message) {
     if ('action' in message && message.action == 'update-word') {
