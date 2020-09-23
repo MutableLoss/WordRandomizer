@@ -43,7 +43,7 @@ inputStream.pipe(CsvReadableStream({
 
   if (empty && Object.keys(row).length) {
     for (let header of Object.keys(row)) {
-      if (!ignoredHeaders.includes(row[header])) {
+      if (ignoredHeaders.includes(row[header])) {
         ignore = true
         empty = false
       } else if(row[header] === 'Meaning') {
