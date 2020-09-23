@@ -44,12 +44,11 @@
   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     var wordSet = undefined;
     if(request.name === 'get-word') {
-      chrome.tabs.query({ active: true }, function(tabs) {
-        var wordSet = WordList.word;
-        console.log(`wordGet: ${wordSet.word}`);
-        sendResponse({ word: wordSet });
+      wordSet = WordList.word;
 
-        chrome.runtime.sendMessage({ word: wordSet }, function(response) {});
+      chrome.runtime.sendMessage({
+          action: 'update-word',
+          word: wordSet
       });
     }
   })
