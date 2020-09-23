@@ -39,7 +39,7 @@
     });
   }
 
-  checkTime = setInterval(checkWords(), pollTime);
+  checkTime = setInterval(checkWords, pollTime);
 
   checkWords();
 
