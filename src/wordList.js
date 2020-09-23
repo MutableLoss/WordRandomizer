@@ -17,14 +17,20 @@
       });
     },
 
-    setWord: function(cb) {
+    setWord: function(cb = null) {
       if (this.wordList.length) {
         this.word = this.wordList[Math.floor(Math.random() * this.wordList.length) + 1]
+        console.log(`set: ${this.word.word}`)
       }
-      cb(this.word)
+      if (cb) {
+        cb(this.word)
+      } else {
+        console.log(this.word)
+      }
     },
 
     getWord: function() {
+      console.log(`get: ${this.word.word}`)
       this.word
     }
   };
