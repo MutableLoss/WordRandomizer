@@ -1,10 +1,11 @@
 (function() {
   window.wordRandomizer = window.wordRandomizer || {};
-
   window.words = chrome.runtime.getURL('words.json')
 
   wordRandomizer.WordList = function() {
     this.total = 0;
+    this.wordList = [];
+    this.setWord = {};
     this.conversationList = [];
   };
 
@@ -12,8 +13,20 @@
     initList: cb => {
       fetch(window.words)
       .then(res => res.json())
-      .then(out => cb(out)); 
-    }
+      .then(listOutput => {
+        this.wordList = listOutput
+        cb(listOutput)
+      }); 
+    },
+    setWord: word => {
+      if(word) {
+        this.setWord = word
+      } else {
+        this.setWord = this.wordList[Math.floor(Math.random() * wordList.length) + 1]
+      }
+      console.log(`Set: ${this.setWord}`)
+    },
+    getWord: () => this.setWord
   };
 
   // make single instance for extension
