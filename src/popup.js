@@ -3,37 +3,28 @@
 
   const port = chrome.runtime.connect({ name: "randomizer" });
 
-  var settings
+  var settings, wordSet
 
   function createBlock() {
-    let wordList = document.querySelector('.word-list');
+    let wordDiv = document.querySelector('.word');
     let wordBlock = document.createElement('span');
-    wordBlock.setAttribute('target', '_inbox');
-    wordBlock.setAttribute('class', 'button message-block');
-    wordBlock.textHtml = window.setWord
+    wordBlock.setAttribute('class', 'word-block word-question');
+    wordBlock.innerHTML = wordSet.word
 
-    bkg.console.log(`pop: ${WordList.getWord()}`)
+    let answerBlock = document.createElement('span');
+    answerBlock.setAttribute('class', 'word-block word-answer');
+    answerBlock.innerHTML = wordSet.meaning
 
-    wordList.append(wordBlock);
+    wordDiv.append(wordBlock);
+    wordDiv.append(answerBlock);
   }
 
-  function onSettingsReady(message) {
-    console.log(message)
-  }
-
-  chrome.runtime.sendMessage({ name: 'get-word' }, function(response) {
-    console.log(`resp: ${response}`)
-      wordSet = response.word;
-      onSettingsReady(settings);
-  });
+  chrome.runtime.sendMessage({ name: 'get-word' }, function(response) {});
 
   chrome.runtime.onMessage.addListener(function(message) {
     if ('action' in message && message.action == 'update-word') {
-      console.log(`response: ${response}`)
-      wordSet = response.word;
-      onSettingsReady(settings);
+      wordSet = message.word;
+      createBlock();
     }
   })
-
-  createBlock();
 })();
