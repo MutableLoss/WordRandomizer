@@ -4,18 +4,25 @@
 
   function checkWords(cb = null) {
     WordList.initList(function(wordList) {
-      WordList.setWord();
+      WordList.setWord(function(word) {
+        messageNotification();
+      });
     });
   }
 
-  function badgeUpdate(total) {
-    if(total !== 0) {
-      chrome.browserAction.setBadgeText({text: total.toString()});
-      chrome.browserAction.setBadgeBackgroundColor({color: [185,0,0,255]});
-    } else {
-      chrome.browserAction.setBadgeText({text: '0'});
+  function messageNotification() {
+    sendMessage();
+    statusUpdate();
+    badgeUpdate();
+  }
+
+  function badgeUpdate() {
+      chrome.browserAction.setBadgeText({text: 'あ'});
       chrome.browserAction.setBadgeBackgroundColor({color: [125,125,225,255]});
-    }
+  }
+
+  function clearBadge() {
+      chrome.browserAction.setBadgeText({text: ''});
   }
 
   function sendMessage() {
@@ -25,21 +32,16 @@
     });
   }
 
-  function messageNotification() {
-    sendMessage();
-  }
-
-  function statusUpdate(total) {
+  function statusUpdate() {
     new Notification('Nihon Randomizer', {
       icon: chrome.extension.getURL('images/icon_128.png'),
       body: 'Time to study!'
     });
   }
 
-  // checkTime = setInterval(checkWords, pollTime);
+  checkTime = setInterval(checkWords, pollTime);
 
   checkWords();
-
 
   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     var wordSet = undefined;
@@ -50,6 +52,8 @@
           action: 'update-word',
           word: wordSet
       });
+    } else if(request.name === 'clear-badge') {
+      clearBadge();
     }
   })
 })();
