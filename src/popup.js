@@ -9,14 +9,22 @@
     let wordDiv = document.querySelector('.word');
     let wordBlock = document.createElement('span');
     wordBlock.setAttribute('class', 'word-block word-question');
-    wordBlock.innerHTML = wordSet.word
+    wordBlock.innerHTML = wordSet.word;
 
     let answerBlock = document.createElement('span');
     answerBlock.setAttribute('class', 'word-block word-answer');
-    answerBlock.innerHTML = wordSet.meaning
+    answerBlock.innerHTML = wordSet.meaning;
 
     wordDiv.append(wordBlock);
     wordDiv.append(answerBlock);
+
+    if (wordSet.ex != '') {
+      let exampleBlock = document.createElement('span');
+      exampleBlock.setAttribute('class', 'word-block word-example');
+      exampleBlock.innerHTML = wordSet.example;
+
+      wordDiv.append(exampleBlock);
+    }
   }
 
   chrome.runtime.sendMessage({ name: 'clear-badge' }, function(response) {});
