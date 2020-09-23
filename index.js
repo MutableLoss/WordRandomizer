@@ -16,6 +16,7 @@ let ex = 0
 let ignore = false
 let first = false
 let empty = true
+let typeName = ''
 
 const ignoredHeaders = [
   'Particle',
@@ -42,6 +43,7 @@ inputStream.pipe(CsvReadableStream({
   }
 
   if (empty && Object.keys(row).length) {
+    typeName = row[0]
     for (let header of Object.keys(row)) {
       if (ignoredHeaders.includes(row[header])) {
         ignore = true
@@ -60,6 +62,7 @@ inputStream.pipe(CsvReadableStream({
     if (row) {
       newWords.push({
         word: row[0],
+        type: typeName,
         meaning: row[meaning],
         example: row[ex]
       })
