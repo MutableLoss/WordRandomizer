@@ -1,18 +1,25 @@
 
+body {
+  padding: 0;
+  margin: 0;
+}
+
 .word-list {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  /* height: 250px; */
 }
 
 .word {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
 }
 
 .word-block {
+  padding: 40px 20px;
+  border-radius: 5px;
   text-align: center;
   font-size: 20px;
 }
@@ -22,9 +29,15 @@
 }
 
 .word-answer {
-  color: #fff;
+  background-color: #2dbe93;
+  color: #2dbe93;
+  width: 100%;
 }
 
 .word-answer:hover {
-  color: #000;
+  color: #fff;
+}
+
+.word-example {
+  color: #2775aa;
 }
