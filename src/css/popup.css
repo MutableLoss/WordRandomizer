@@ -1,9 +1,30 @@
 
 .word-list {
   width: 200px;
-  color: '#000';
+  height: 200px;
 }
 
 .word {
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.word-block {
+  text-align: center;
+  font-size: 20px;
+}
+
+.word-question {
+  color: #000;
+}
+
+.word-answer {
+  color: #fff;
+}
+
+.word-answer:hover {
+  color: #000;
 }
