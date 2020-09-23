@@ -1,8 +1,9 @@
 (function() {
-  const WordList = new wordRandomizer.WordList;
-
   const bkg = chrome.extension.getBackgroundPage();
+
   const port = chrome.runtime.connect({ name: "randomizer" });
+
+  var settings
 
   function createBlock() {
     let wordList = document.querySelector('.word-list');
@@ -16,13 +17,23 @@
     wordList.append(wordBlock);
   }
 
-  function populateList() {
-    WordList.initList(words => createBlock());
-
-    chrome.runtime.sendMessage({}, function(response) {
-      console.log(`popup: ${response}`)
-    });
+  function onSettingsReady(message) {
+    console.log(message)
   }
 
-  populateList();
+  chrome.runtime.sendMessage({ name: 'get-word' }, function(response) {
+    console.log(`resp: ${response}`)
+      wordSet = response.word;
+      onSettingsReady(settings);
+  });
+
+  chrome.runtime.onMessage.addListener(function(message) {
+    if ('action' in message && message.action == 'update-word') {
+      console.log(`response: ${response}`)
+      wordSet = response.word;
+      onSettingsReady(settings);
+    }
+  })
+
+  createBlock();
 })();
