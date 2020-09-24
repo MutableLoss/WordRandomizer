@@ -4,6 +4,7 @@
 
   wordRandomizer.WordList = function() {
     this.wordList = [];
+    this.wordSet = [];
     this.word = {};
   };
 
@@ -20,6 +21,7 @@
     setWord: function(cb = null) {
       if (this.wordList.length) {
         this.word = this.wordList[Math.floor(Math.random() * this.wordList.length) + 1]
+        this.wordSet.push(this.word);
         console.log(`set: ${this.word.word}`)
       }
       if (cb) {
@@ -32,6 +34,10 @@
     getWord: function() {
       console.log(`get: ${this.word.word}`)
       this.word
+    },
+
+    getWordSet: function() {
+      this.wordSet
     }
   };
 
