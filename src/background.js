@@ -1,11 +1,13 @@
 (function() {
-  const pollTime = 3600000;
+  const pollTime = 1000 * 60 * 30;
   const WordList = new wordRandomizer.WordList;
+  let last = 0;
 
   function checkWords() {
     WordList.initList(function() {
       WordList.setWord(function() {
         messageNotification();
+        last = Date.now()
       });
     });
   }
@@ -39,7 +41,11 @@
     });
   }
 
-  checkTime = setInterval(checkWords, pollTime);
+  checkTime = setInterval(function() {
+    if (Date.now() > (last + pollTime)) {
+      checkWords()
+    }
+  }, 10000);
 
   checkWords();
 
