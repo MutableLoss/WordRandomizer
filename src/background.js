@@ -53,10 +53,12 @@
     var word = undefined;
     if(request.name === 'get-word') {
       word = WordList.word;
+      wordSet = WordList.wordSet;
 
       chrome.runtime.sendMessage({
           action: 'update-word',
-          word: word
+          word: word,
+          wordSet: wordSet
       });
     } else if(request.name === 'clear-badge') {
       clearBadge();
