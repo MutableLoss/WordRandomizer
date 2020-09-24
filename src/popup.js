@@ -36,6 +36,7 @@
     if ('action' in message && message.action == 'update-word') {
       if (Object.keys(message).includes('word')) {
         word = message.word;
+        wordSet = message.wordSet;
         createBlock();
       }
     }
