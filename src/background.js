@@ -50,13 +50,13 @@
   checkWords();
 
   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    var wordSet = undefined;
+    var word = undefined;
     if(request.name === 'get-word') {
-      wordSet = WordList.word;
+      word = WordList.word;
 
       chrome.runtime.sendMessage({
           action: 'update-word',
-          word: wordSet
+          word: word
       });
     } else if(request.name === 'clear-badge') {
       clearBadge();
