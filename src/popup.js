@@ -3,7 +3,7 @@
 
   const port = chrome.runtime.connect({ name: "randomizer" });
 
-  var settings, wordSet
+  var settings, wordSet;
 
   function createBlock() {
     let wordDiv = document.querySelector('.word');
