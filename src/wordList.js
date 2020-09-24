@@ -13,31 +13,32 @@
       fetch(window.words)
       .then(res => res.json())
       .then(out => {
-        this.wordList = out
-        cb(out)
+        this.wordList = out;
+        cb(out);
       });
     },
 
     setWord: function(cb = null) {
       if (this.wordList.length) {
-        this.word = this.wordList[Math.floor(Math.random() * this.wordList.length) + 1]
+        this.word = this.wordList[Math.floor(Math.random() * this.wordList.length) + 1];
         this.wordSet.push(this.word);
-        console.log(`set: ${this.word.word}`)
       }
+
       if (cb) {
-        cb(this.word)
-      } else {
-        console.log(this.word)
+        cb(this.word);
       }
     },
 
     getWord: function() {
-      console.log(`get: ${this.word.word}`)
-      this.word
+      this.word;
     },
 
     getWordSet: function() {
-      this.wordSet
+      this.wordSet;
+    },
+
+    resetWordSet: function() {
+      this.wordSet = [];
     }
   };
 
