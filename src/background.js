@@ -7,31 +7,23 @@
     WordList.initList(function() {
       WordList.setWord(function() {
         messageNotification();
-        last = Date.now()
+        last = Date.now();
       });
     });
   }
 
   function messageNotification() {
-    sendMessage();
     statusUpdate();
     badgeUpdate();
   }
 
   function badgeUpdate() {
-      chrome.browserAction.setBadgeText({text: 'あ'});
-      chrome.browserAction.setBadgeBackgroundColor({color: [125,125,225,255]});
+    chrome.browserAction.setBadgeText({text: 'あ'});
+    chrome.browserAction.setBadgeBackgroundColor({color: [125,125,225,255]});
   }
 
   function clearBadge() {
-      chrome.browserAction.setBadgeText({text: ''});
-  }
-
-  function sendMessage() {
-    new Notification(`Time for a new word!`, {
-      icon: chrome.extension.getURL('images/icon_128.png'),
-      body: 'Study a word!'
-    });
+    chrome.browserAction.setBadgeText({text: ''});
   }
 
   function statusUpdate() {
