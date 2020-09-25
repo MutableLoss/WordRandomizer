@@ -43,7 +43,7 @@
       wordDiv.insertBefore(exampleBlock, answerBlock);
     }
 
-    if (currentWord < wordSet.length) {
+    if (currentWord < (wordSet.length - 1)) {
       let nextButton = document.createElement('button')
       nextButton.setAttribute('class', 'next-button');
       nextButton.id = 'next';
