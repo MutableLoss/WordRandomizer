@@ -2,6 +2,20 @@
   const pollTime = 1000 * 60 * 30;
   const WordList = new wordRandomizer.WordList;
   let last = 0;
+  var history_log = [];
+  var current_state = '';
+
+  chrome.idle.onStateChanged.addListener(function(newState) {
+    var time = new Date();
+
+    if (history_log.length >= 20) {
+      history_log.pop();
+    }
+
+    history_log.unshift({ state: newState, time: time });
+    current_state = newState;
+    console.log(current_state);
+  });
 
   function checkWords() {
     WordList.initList(function() {
@@ -36,6 +50,7 @@
   checkTime = setInterval(function() {
     if (Date.now() > (last + pollTime)) {
       checkWords()
+    }
     }
   }, 10000);
 
