@@ -1,4 +1,8 @@
 
+html {
+  height: 200px;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -6,7 +10,6 @@ body {
 
 .word-list {
   width: 250px;
-  /* height: 250px; */
 }
 
 .word {
@@ -14,7 +17,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
 }
 
 .word-block {
@@ -40,4 +42,22 @@ body {
 
 .word-example {
   color: #2775aa;
+}
+
+.next-button {
+  padding: 20px;
+  width: 100%;
+  outline: none;
+  color: #fff;
+  border: none;
+  background-color: #138563;
+}
+
+.next-button:focus, .next-button:active {
+  outline: none;
+  background-color: #30c79a;
+}
+
+.next-button:hover {
+  background-color: #21af85;
 }
