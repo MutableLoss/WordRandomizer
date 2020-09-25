@@ -4,6 +4,7 @@
   let last = 0;
   var history_log = [];
   var current_state = '';
+  var day = 0;
 
   chrome.idle.onStateChanged.addListener(function(newState) {
     var time = new Date();
@@ -17,11 +18,18 @@
     console.log(current_state);
   });
 
+  function getTimes() {
+    let date = new Date();
+    return { day: date.getDate(), last: Date.parse(date) }
+  }
+
   function checkWords() {
     WordList.initList(function() {
       WordList.setWord(function() {
         messageNotification();
-        last = Date.now();
+        let date = getTimes();
+        day = date.day;
+        last = date.last;
       });
     });
   }
@@ -48,9 +56,13 @@
   }
 
   checkTime = setInterval(function() {
-    if (Date.now() > (last + pollTime)) {
-      checkWords()
-    }
+    let date = getTimes();
+
+    if (date.last > (last + pollTime)) {
+      if (date.day > day || date.day == 0) {
+        WordList.resetWordSet();
+      }
+      checkWords();
     }
   }, 10000);
 
