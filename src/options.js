@@ -1,12 +1,16 @@
 (function() {
   window.wordRandomizer = window.wordRandomizer || {};
+  const Preferences = new wordRandomizer.Preferences;
+  const Localizer = new wordRandomizer.Localizer;
 
-  let Preferences = new wordRandomizer.Preferences;
+  window.addEventListener('DOMContentLoaded', () => {
+    Localizer.localize();
+  });
 
   let submitButton = document.getElementById('submit');
-  let pollTime = document.getElementById('pollTime');
-  let startTime = document.getElementById('startTime');
-  let stopTime = document.getElementById('stopTime');
+  let pollTime = document.querySelector('input[name=pollTime]');
+  let startTime = document.querySelector('input[name=startTime]');
+  let stopTime = document.querySelector('input[name=stopTime]');
   let setLang = 'en';
 
   Preferences.get('pollTime', savedPollTime => {
@@ -22,7 +26,7 @@
   });
 
   Preferences.get('language', savedLanguage => {
-    setLang = savedLanguage;
+    setLang = savedLanguage || Preferences.getLocal('language');
   });
 
   submitButton.addEventListener('click', function() {
