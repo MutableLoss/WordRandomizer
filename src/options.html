@@ -1,37 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html data-chrome-i18n="lang=@@ui_locale">
   <head>
+    <meta charset="UTF8" />
     <link rel="stylesheet" type="text/css" href="css/options.css">
+    <title data-chrome-i18n="extName"></title>
   </head>
   <body>
     <div class="option-container">
       <div class="option">
-        <label>
-          Study Time Interval:
-        </label>
+        <label data-chrome-i18n="pollText"></label>
         <div class="input-container">
-          <input id="pollTime" name="pollTime"> minutes
+          <input id="pollTime" name="pollTime" data-chrome-i18n="pollInputType">
         </div>
       </div>
       <div class="option">
-        <label>
-          Hour to start studying ( 00 - 23 ):
-        </label>
+        <label data-chrome-i18n="startText"></label>
         <div>
           <input id="startTime" name="startTime"> : 00
         </div>
       </div>
       <div class="option">
-        <label>
-          Hour to stop studying ( 00 - 23 ):
-        </label>
+        <label data-chrome-i18n="stopText"></label>
         <div>
           <input id="stopTime" name="stopTime"> : 00
         </div>
       </div>
-      <button id="submit">Save</button>
+      <button id="submit" data-chrome-i18n="saveButton"></button>
     </div>
   </body>
+  <script src="localizer.js"></script>
   <script src="preferences.js"></script>
   <script src="options.js"></script>
 </html>
