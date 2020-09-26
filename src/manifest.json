@@ -11,6 +11,7 @@
   "background": {
     "scripts": [
       "wordList.js",
+      "preferences.js",
       "background.js"
     ],
     "persistent": true
