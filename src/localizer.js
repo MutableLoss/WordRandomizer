@@ -1,6 +1,6 @@
 (function() {
   window.wordRandomizer = window.wordRandomizer || {};
-  const i18n = (window.browser || window.chrome || {}).i18n || { getMessage: () => undefined };
+  const i18n = window.chrome.i18n;
 
   wordRandomizer.Localizer = function() {
     this.defaultTranslate = i18n.getMessage;
@@ -9,7 +9,7 @@
 
   wordRandomizer.Localizer.prototype = {
     constructor: function(options = {}) {
-      const { translate = Localizer.defaultTranslate, attributeName = Localizer.defaultAttributeName, parse = Localizer.defaultParse } = options;
+      const { translate = this.defaultTranslate, attributeName = this.defaultAttributeName, parse = this.defaultParse } = options;
       this.translate = translate;
       this.attributeName = attributeName;
       this.parse = parse;
@@ -21,13 +21,13 @@
 
     localizeElement: function(element) {
       for (const [destination, name] of this.parse(element.getAttribute(this.attributeName))) {
+        console.log(`${name} / ${destination}`)
         if (!name)
           continue;
         const message = this.translate(name) || '';
         if (!destination) {
           element.textContent = message;
-        }
-        else {
+        } else {
           element.setAttribute(destination, message);
         }
       }
