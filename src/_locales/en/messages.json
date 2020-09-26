@@ -3,12 +3,12 @@
     "message": "Word Randomizer",
     "description": "Extension Name"
   },
-  "pollText": "Study Time Interval",
-  "pollInputType": "minutes",
-  "startText": "Hour to start studying ( 00 - 23 ):",
-  "stopText": "Hour to stop studying ( 00 - 23 ):",
-  "saveButton": "Save",
   "options": {
+    "pollText": "Study Time Interval",
+    "pollInputType": "minutes",
+    "startText": "Hour to start studying ( 00 - 23 ):",
+    "stopText": "Hour to stop studying ( 00 - 23 ):",
+    "saveButton": "Save",
     "message": "test",
     "page": "options.en.html"
   }
