@@ -7,6 +7,7 @@
   let pollTime = document.getElementById('pollTime');
   let startTime = document.getElementById('startTime');
   let stopTime = document.getElementById('stopTime');
+  let setLang = 'en';
 
   Preferences.get('pollTime', savedPollTime => {
     pollTime.value = savedPollTime;
@@ -18,6 +19,10 @@
 
   Preferences.get('stopTime', savedStopTime => {
     stopTime.value = savedStopTime;
+  });
+
+  Preferences.get('language', savedLanguage => {
+    setLang = savedLanguage;
   });
 
   submitButton.addEventListener('click', function() {
