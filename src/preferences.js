@@ -6,20 +6,21 @@
       options: {
         pollTime: 30,
         startTime: 9,
-        stopTime: 22
+        stopTime: 22,
+        language: 'en'
       }
     }
   };
 
   wordRandomizer.Preferences.prototype = {
-    get: function(key, cb) {
+    get: function(prefKey, cb) {
       chrome.storage.sync.get(this.settings, store => {
-        cb(store.options[key]);
+        cb(store.options[prefKey]);
       });
     },
-    set: function(key, val) {
+    set: function(prefKey, value) {
       chrome.storage.sync.get(this.settings, store => {
-        store.options[key] = val;
+        store.options[prefKey] = value;
         chrome.storage.sync.set(store);
       });
     }
