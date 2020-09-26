@@ -1,7 +1,7 @@
 {
-  "name": "numberrandomizer",
+  "name": "word-randomizer",
   "version": "1.0.0",
-  "description": "Generate Word File from CSV List",
+  "description": "Study Vocabulary words from a CSV List",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
