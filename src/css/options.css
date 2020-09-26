@@ -1,0 +1,22 @@
+
+.option-container {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  margin: 20px;
+}
+
+.option {
+  margin: 10px;
+}
+
+.option input {
+  margin: 10px 0;
+  width: 30px;
+}
+
+.time-input {
+  width: 30px;
+}

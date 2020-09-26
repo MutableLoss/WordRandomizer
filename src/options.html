@@ -4,24 +4,30 @@
     <link rel="stylesheet" type="text/css" href="css/options.css">
   </head>
   <body>
-    <div>
-      <div>
+    <div class="option-container">
+      <div class="option">
         <label>
-          Study Time Interval
-          <input id="pollTime" name="pollTime">
+          Study Time Interval:
         </label>
+        <div class="input-container">
+          <input id="pollTime" name="pollTime"> minutes
+        </div>
       </div>
-      <div>
+      <div class="option">
         <label>
-          Start studying at:
-          <input id="startTime" name="startTime">
+          Hour to start studying ( 00 - 23 ):
         </label>
+        <div>
+          <input id="startTime" name="startTime"> : 00
+        </div>
       </div>
-      <div>
+      <div class="option">
         <label>
-          Stop studying at:
-          <input id="stopTime" name="stopTime">
+          Hour to stop studying ( 00 - 23 ):
         </label>
+        <div>
+          <input id="stopTime" name="stopTime"> : 00
+        </div>
       </div>
       <button id="submit">Save</button>
     </div>
