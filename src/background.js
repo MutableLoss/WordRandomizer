@@ -1,10 +1,13 @@
 (function() {
-  const pollTime = 1000 * 60 * 30;
   const WordList = new wordRandomizer.WordList;
+  const Preferences = new wordRandomizer.Preferences;
+  const Utilities = new wordRandomizer.Utilities;
+
   let last = 0;
   var history_log = [];
   var current_state = '';
   var day = 0;
+  const pollTime = 1000 * 60 * Preferences.getLocal['pollTime'];
 
   chrome.idle.onStateChanged.addListener(function(newState) {
     var time = new Date();
@@ -16,6 +19,12 @@
     history_log.unshift({ state: newState, time: time });
     current_state = newState;
     console.log(current_state);
+  });
+
+  chrome.tabs.getSelected(null, function(tab) {
+    chrome.tabs.detectLanguage(tab.id, function(language) {
+      Preferences.set('language', language);
+    });
   });
 
   function getTimes() {
@@ -56,7 +65,7 @@
   }
 
   checkTime = setInterval(function() {
-    let date = getTimes();
+    let date = Utilities.getTimes();
 
     if (date.last > (last + pollTime)) {
       if (date.day > day || date.day == 0) {
