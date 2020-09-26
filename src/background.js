@@ -6,7 +6,7 @@
   let last = 0;
   var history_log = [];
   var current_state = '';
-  var day = 0;
+  let day = 0;
 
   chrome.idle.onStateChanged.addListener(function(newState) {
     var time = new Date();
