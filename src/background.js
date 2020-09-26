@@ -27,10 +27,11 @@
   });
 
   function checkWords() {
-    WordList.initList(function() {
-      WordList.setWord(function() {
+    let date = Utilities.getTimes();
+
+    WordList.initList(function(_wordList) {
+      WordList.setWord(function(_wordSet) {
         messageNotification();
-        let date = getTimes();
         day = date.day;
         last = date.last;
       });
@@ -58,15 +59,20 @@
     });
   }
 
-  checkTime = setInterval(function() {
+  const checkTime = setInterval(function() {
     let date = Utilities.getTimes();
     let pollTime = Preferences.getLocal['pollTime'];
+    let startTime = Preferences.getLocal['startTime'];
+    let stopTime = Preferences.getLocal['startTime'];
 
     if (date.last > (last + (1000 * 60 * pollTime))) {
-      if (date.day > day || date.day == 0) {
+      if (date.day !== day) {
         WordList.resetWordSet();
       }
-      checkWords();
+
+      if (date.hour > startTime && date.hour < stopTime) {
+        checkWords();
+      }
     }
   }, 10000);
 
