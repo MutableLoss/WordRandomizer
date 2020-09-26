@@ -2,6 +2,11 @@
   const WordList = new wordRandomizer.WordList;
   const Preferences = new wordRandomizer.Preferences;
   const Utilities = new wordRandomizer.Utilities;
+  const Localizer = new wordRandomizer.Localizer;
+
+  window.addEventListener('DOMContentLoaded', () => {
+    Localizer.localize();
+  });
 
   let last = 0;
   var history_log = [];

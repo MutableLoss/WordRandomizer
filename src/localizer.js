@@ -5,7 +5,7 @@
   wordRandomizer.Localizer = function() {
     this.defaultTranslate = i18n.getMessage;
     this.defaultAttributeName = 'data-chrome-i18n';
-  };
+  }
 
   wordRandomizer.Localizer.prototype = {
     constructor: function(options = {}) {
