@@ -10,6 +10,7 @@
   ],
   "background": {
     "scripts": [
+      "utilities.js",
       "wordList.js",
       "preferences.js",
       "background.js"
