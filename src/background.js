@@ -7,7 +7,6 @@
   var history_log = [];
   var current_state = '';
   var day = 0;
-  const pollTime = 1000 * 60 * Preferences.getLocal['pollTime'];
 
   chrome.idle.onStateChanged.addListener(function(newState) {
     var time = new Date();
@@ -26,11 +25,6 @@
       Preferences.set('language', language);
     });
   });
-
-  function getTimes() {
-    let date = new Date();
-    return { day: date.getDate(), last: Date.parse(date) }
-  }
 
   function checkWords() {
     WordList.initList(function() {
@@ -66,8 +60,9 @@
 
   checkTime = setInterval(function() {
     let date = Utilities.getTimes();
+    let pollTime = Preferences.getLocal['pollTime'];
 
-    if (date.last > (last + pollTime)) {
+    if (date.last > (last + (1000 * 60 * pollTime))) {
       if (date.day > day || date.day == 0) {
         WordList.resetWordSet();
       }
