@@ -6,8 +6,12 @@
   wordRandomizer.Utilities.prototype = {
     getTimes: function() {
       let date = new Date();
-      return { day: date.getDate(), last: Date.parse(date) }
+      return {
+        day: date.getDate(),
+        hour: date.getHours(),
+        last: Date.parse(date)
+      }
     },
-    
+
   };
 })();
