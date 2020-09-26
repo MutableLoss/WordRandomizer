@@ -23,7 +23,7 @@
     },
     get: function(prefKey, cb) {
       chrome.storage.sync.get(this.settings, store => {
-        cb(store.options[prefKey]);
+        cb(store ? store.options[prefKey] : this.settings.options[prefKey]);
       });
     },
     set: function(prefKey, value) {
