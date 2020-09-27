@@ -12,6 +12,18 @@ body {
   width: 250px;
 }
 
+.type-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.word-type {
+  text-align: right;
+  margin: 10px;
+  font-style: italic;
+}
+
 .word {
   display: flex;
   flex-direction: column;

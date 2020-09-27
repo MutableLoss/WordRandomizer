@@ -32,6 +32,9 @@
     let wordBlock = document.querySelector('.word-question');
     wordBlock.innerHTML = wordSet[currentWord].word;
 
+    let typeBlock = document.querySelector('.word-type');
+    typeBlock.innerHTML = wordSet[currentWord].type;
+
     let answerBlock = document.querySelector('.word-answer');
     answerBlock.innerHTML = wordSet[currentWord].meaning;
 
