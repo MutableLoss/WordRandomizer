@@ -66,9 +66,11 @@
 
   const checkTime = setInterval(function() {
     let date = Utilities.getTimes();
-    let pollTime = Preferences.getLocal['pollTime'];
-    let startTime = Preferences.getLocal['startTime'];
-    let stopTime = Preferences.getLocal['startTime'];
+    let pollTime = Preferences.getLocal('pollTime');
+    let startTime = Preferences.getLocal('startTime');
+    let stopTime = Preferences.getLocal('startTime');
+
+    console.log(`S:${startTime} E:${stopTime} P:${pollTime} ${1000 * 60 * pollTime}`)
 
     if (date.last > (last + (1000 * 60 * pollTime))) {
       if (date.day !== day) {
