@@ -10,16 +10,20 @@
         language: 'en'
       }
     }
+
+    let Prefs = this
+    Object.keys(this.settings.options).map(function(key) {
+      Prefs.get(key, function(value) {
+        if (value) {
+          Prefs.settings.options[key] = value
+        }
+      });
+    });
   };
 
   wordRandomizer.Preferences.prototype = {
-    constructor: function() {
-      Object.keys(this.settings.options).map(key => {
-        this.settings[key] = this.get(key);
-      });
-    },
     getLocal: function(prefKey) {
-      this.settings.options[prefKey];
+      return this.settings.options[prefKey];
     },
     get: function(prefKey, cb) {
       chrome.storage.sync.get(this.settings, store => {
