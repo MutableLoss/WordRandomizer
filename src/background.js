@@ -70,8 +70,6 @@
     let startTime = Preferences.getLocal('startTime');
     let stopTime = Preferences.getLocal('startTime');
 
-    console.log(`S:${startTime} E:${stopTime} P:${pollTime} ${1000 * 60 * pollTime}`)
-
     if (date.last > (last + (1000 * 60 * pollTime))) {
       if (date.day !== day) {
         WordList.resetWordSet();
