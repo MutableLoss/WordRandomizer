@@ -68,7 +68,7 @@
     let date = Utilities.getTimes();
     let pollTime = Preferences.getLocal('pollTime');
     let startTime = Preferences.getLocal('startTime');
-    let stopTime = Preferences.getLocal('startTime');
+    let stopTime = Preferences.getLocal('stopTime');
 
     if (date.last > (last + (1000 * 60 * pollTime))) {
       if (date.day !== day) {
