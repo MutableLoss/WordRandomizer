@@ -32,8 +32,8 @@
     let wordBlock = document.querySelector('.word-question');
     wordBlock.innerHTML = wordSet[currentWord].word;
 
-    let typeBlock = document.querySelector('.word-type');
-    typeBlock.innerHTML = wordSet[currentWord].type;
+    let typeContainer = document.querySelector('.type-container');
+    typeContainer.children[0].innerHTML = wordSet[currentWord].type;
 
     let answerBlock = document.querySelector('.word-answer');
     answerBlock.innerHTML = wordSet[currentWord].meaning;
@@ -52,7 +52,7 @@
       nextButton.id = 'next';
       nextButton.innerText = 'Next';
 
-      wordDiv.insertBefore(nextButton, wordBlock);
+      wordDiv.insertBefore(nextButton, typeContainer);
     }
   }
 
