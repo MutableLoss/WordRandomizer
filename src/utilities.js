@@ -13,5 +13,12 @@
       }
     },
 
+    updateMessage: function(elementId) {
+      let element = document.getElementById(elementId);
+      let data = element.getAttribute('data-chrome-i18n')
+      let text = chrome.i18n.getMessage(data);
+
+      element.textContent = text;
+    }
   };
 })();
