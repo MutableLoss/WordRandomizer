@@ -3,31 +3,32 @@
   <head>
     <meta charset="UTF8" />
     <link rel="stylesheet" type="text/css" href="css/options.css">
-    <title data-chrome-i18n="extName"></title>
+    <title id="extName" data-chrome-i18n="extName"></title>
   </head>
   <body>
     <div class="option-container">
       <div class="option">
-        <label data-chrome-i18n="pollText"></label>
+        <label id="pollTimeLabel" data-chrome-i18n="pollTimeLabel"></label>
         <div class="input-container">
-          <input id="pollTime" name="pollTime" data-chrome-i18n="pollInputType">
+          <input id="pollTime" name="pollTime" data-chrome-i18n="pollInputType"> <span id="pollInputType" data-chrome-i18n="pollInputType"></span>
         </div>
       </div>
       <div class="option">
-        <label data-chrome-i18n="startText"></label>
+        <label id="startTimeLabel" data-chrome-i18n="startTimeLabel"></label>
         <div>
           <input id="startTime" name="startTime"> : 00
         </div>
       </div>
       <div class="option">
-        <label data-chrome-i18n="stopText"></label>
+        <label id="stopTimeLabel" data-chrome-i18n="stopTimeLabel"></label>
         <div>
           <input id="stopTime" name="stopTime"> : 00
         </div>
       </div>
-      <button id="submit" data-chrome-i18n="saveButton"></button>
+      <button id="saveButton" data-chrome-i18n="saveButton" type="submit"></button>
     </div>
   </body>
+  <script src="utilities.js"></script>
   <script src="localizer.js"></script>
   <script src="preferences.js"></script>
   <script src="options.js"></script>
