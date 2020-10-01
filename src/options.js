@@ -13,9 +13,9 @@
   const Utilities = new wordRandomizer.Utilities;
   const Localizer = new wordRandomizer.Localizer;
 
-  window.addEventListener('DOMContentLoaded', () => {
-    Localizer.localize();
-  });
+  // window.addEventListener('DOMContentLoaded', () => {
+  //   Localizer.localize();
+  // });
 
   let submitButton = document.getElementById('saveButton');
   let pollTime = document.querySelector('input[name=pollTime]');
@@ -23,27 +23,20 @@
   let stopTime = document.querySelector('input[name=stopTime]');
   let setLang = 'en';
 
+  submitButton.addEventListener('click', function(e) {
+    if (event.target.id === 'saveButton') {
+      Preferences.set('pollTime', pollTime.value);
+      Preferences.set('startTime', startTime.value);
+      Preferences.set('stopTime', stopTime.value);
+    }
+  });
+
   locales.forEach(area => { Utilities.updateMessage(area) });
 
-  Preferences.get('pollTime', savedPollTime => {
-    pollTime.value = savedPollTime;
-  });
-
-  Preferences.get('startTime', savedStartTime => {
-    startTime.value = savedStartTime;
-  });
-
-  Preferences.get('stopTime', savedStopTime => {
-    stopTime.value = savedStopTime;
-  });
-
-  Preferences.get('language', savedLanguage => {
-    setLang = savedLanguage || Preferences.getLocal('language');
-  });
-
-  submitButton.addEventListener('click', function() {
-    Preferences.set('pollTime', pollTime.value);
-    Preferences.set('startTime', startTime.value);
-    Preferences.set('stopTime', stopTime.value);
+  Preferences.get(options => {
+    pollTime.value = options.pollTime;
+    startTime.value = options.startTime;
+    stopTime.value = options.stopTime;
+    // setLang = options.language;
   });
 })();

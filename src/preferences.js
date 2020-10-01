@@ -13,9 +13,9 @@
 
     let Prefs = this
     Object.keys(this.settings.options).map(function(key) {
-      Prefs.get(key, function(value) {
+      Prefs.get(function(value) {
         if (value) {
-          Prefs.settings.options[key] = value
+          Prefs.settings.options = value
         }
       });
     });
@@ -25,16 +25,15 @@
     getLocal: function(prefKey) {
       return this.settings.options[prefKey];
     },
-    get: function(prefKey, cb) {
+    get: function(cb) {
       chrome.storage.sync.get(this.settings, store => {
-        cb(store ? store.options[prefKey] : this.settings.options[prefKey]);
+        cb(store && store.options ? store.options : this.settings.options);
       });
     },
     set: function(prefKey, value) {
       this.settings.options[prefKey] = value;
-      chrome.storage.sync.get(this.settings, store => {
-        store.options[prefKey] = value;
-        chrome.storage.sync.set(store);
+      chrome.storage.sync.set(this.settings, function() {
+        // window.alert('settings saved');
       });
     }
   };

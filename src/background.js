@@ -66,19 +66,21 @@
 
   const checkTime = setInterval(function() {
     let date = Utilities.getTimes();
-    let pollTime = Preferences.getLocal('pollTime');
-    let startTime = Preferences.getLocal('startTime');
-    let stopTime = Preferences.getLocal('stopTime');
+    Preferences.get(function(options) {
+      let pollTime = options.pollTime;
+      let startTime = options.startTime;
+      let stopTime = options.stopTime;
 
-    if (date.last > (last + (1000 * 60 * pollTime))) {
-      if (date.day !== day) {
-        WordList.resetWordSet();
-      }
+      if (date.last > (last + (1000 * 60 * pollTime))) {
+        if (date.day !== day) {
+          WordList.resetWordSet();
+        }
 
-      if (date.hour > startTime && date.hour < stopTime) {
-        checkWords();
+        if (date.hour > startTime && date.hour < stopTime) {
+          checkWords();
+        }
       }
-    }
+    });
   }, 10000);
 
   checkWords();
