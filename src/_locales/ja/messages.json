@@ -3,13 +3,29 @@
     "message": "単語 Randomizer",
     "description": "Extension Name"
   },
+  "pollTimeLabel": {
+    "message": "勉強の時間",
+    "description": ""
+  },
+  "pollInputType": {
+    "message": "分間",
+    "description": ""
+  },
+  "startTimeLabel": {
+    "message": "勉強時が始める ( 00 - 23 ):",
+    "description": ""
+  },
+  "stopTimeLabel":  {
+    "message": "勉強時が終わる ( 00 - 23 ):",
+    "description": ""
+  },
+  "saveButton": {
+    "message": "セーブ",
+    "description": ""
+  },
   "options": {
-    "pollText": "勉強の時間",
-    "pollInputType": "分間",
-    "startText": "勉強時が始める ( 00 - 23 ):",
-    "stopText": "勉強時が終わる ( 00 - 23 ):",
-    "saveButton": "セーブ",
     "message": "test",
+    "description": "test",
     "page": "options.ja.html"
   }
 }
