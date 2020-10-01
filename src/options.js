@@ -1,17 +1,29 @@
 (function() {
+  const locales = [
+    'extName',
+    'pollTimeLabel',
+    'pollInputType',
+    'startTimeLabel',
+    'stopTimeLabel',
+    'saveButton'
+  ];
+
   window.wordRandomizer = window.wordRandomizer || {};
   const Preferences = new wordRandomizer.Preferences;
+  const Utilities = new wordRandomizer.Utilities;
   const Localizer = new wordRandomizer.Localizer;
 
   window.addEventListener('DOMContentLoaded', () => {
     Localizer.localize();
   });
 
-  let submitButton = document.getElementById('submit');
+  let submitButton = document.getElementById('saveButton');
   let pollTime = document.querySelector('input[name=pollTime]');
   let startTime = document.querySelector('input[name=startTime]');
   let stopTime = document.querySelector('input[name=stopTime]');
   let setLang = 'en';
+
+  locales.forEach(area => { Utilities.updateMessage(area) });
 
   Preferences.get('pollTime', savedPollTime => {
     pollTime.value = savedPollTime;
