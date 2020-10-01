@@ -66,7 +66,8 @@
 
   const checkTime = setInterval(function() {
     let date = Utilities.getTimes();
-    Preferences.get(function(options) {
+
+    Preferences.get(options => {
       let pollTime = options.pollTime;
       let startTime = options.startTime;
       let stopTime = options.stopTime;
