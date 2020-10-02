@@ -4,11 +4,12 @@
   "description": "Study Vocabulary words from a CSV List",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "buildWords": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Dennis Brown",
+  "respository": "https://github.com/MutableLoss/WordRandomizer.git",
+  "license": "MIT",
   "dependencies": {
     "csv-parser": "^2.3.3",
     "dotenv": "^8.2.0"
