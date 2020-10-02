@@ -1,7 +1,11 @@
 {
   "extName": {
-    "message": "単語 Randomizer",
-    "description": "Extension Name"
+    "message": "単語のランダム",
+    "description": "お名前"
+  },
+  "notificationMessage": {
+    "message": "勉強の時間",
+    "description": "Notification Message"
   },
   "pollTimeLabel": {
     "message": "勉強の時間",

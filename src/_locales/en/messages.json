@@ -3,6 +3,10 @@
     "message": "Word Randomizer",
     "description": "Extension Name"
   },
+  "notificationMessage": {
+    "message": "Time to study!",
+    "description": "Notification Message"
+  },
   "pollTimeLabel": {
     "message": "Study Time Interval",
     "description": ""
