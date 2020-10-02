@@ -5,6 +5,7 @@
   const Localizer = new wordRandomizer.Localizer;
 
   const extName = chrome.i18n.getMessage('extName');
+  const studyTitle = chrome.i18n.getMessage('notificationTitle');
   const studyMessage = chrome.i18n.getMessage('notificationMessage');
 
   window.addEventListener('DOMContentLoaded', () => {
@@ -61,7 +62,7 @@
   }
 
   function statusUpdate() {
-    new Notification(extName, {
+    new Notification(studyTitle, {
       icon: chrome.extension.getURL('images/icon_128.png'),
       body: studyMessage
     });
