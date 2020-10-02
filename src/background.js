@@ -4,6 +4,9 @@
   const Utilities = new wordRandomizer.Utilities;
   const Localizer = new wordRandomizer.Localizer;
 
+  const extName = chrome.i18n.getMessage('extName');
+  const studyMessage = chrome.i18n.getMessage('notificationMessage');
+
   window.addEventListener('DOMContentLoaded', () => {
     Localizer.localize();
   });
@@ -58,9 +61,9 @@
   }
 
   function statusUpdate() {
-    new Notification('Nihon Randomizer', {
+    new Notification(extName, {
       icon: chrome.extension.getURL('images/icon_128.png'),
-      body: 'Time to study!'
+      body: studyMessage
     });
   }
 
