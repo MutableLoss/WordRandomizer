@@ -3,6 +3,10 @@
     "message": "Word Randomizer",
     "description": "Extension Name"
   },
+  "notificationTitle": {
+    "message": "There is a New Word to Learn",
+    "description": "Notification Title"
+  },
   "notificationMessage": {
     "message": "Time to study!",
     "description": "Notification Message"

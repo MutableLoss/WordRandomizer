@@ -1,7 +1,11 @@
 {
   "extName": {
     "message": "単語のランダム",
-    "description": "お名前"
+    "description": "拡張機能のお名前"
+  },
+  "notificationTitle": {
+    "message": "これは新しい単語",
+    "description": "Notification Title"
   },
   "notificationMessage": {
     "message": "勉強の時間",
