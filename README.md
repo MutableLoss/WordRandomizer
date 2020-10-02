@@ -4,7 +4,7 @@ The Word Randomizer is a Chrome/Brave extension written to help anyone practice 
 
 _Word Randomizer supports both English and Japanese languages_
 
-_Read docs in [日本語](https://github.com/MutableLoss/WordRandomizer/README.ja.md)_
+_Read docs in [日本語](https://github.com/MutableLoss/WordRandomizer/blob/master/README.ja.md)_
 
 ## How it Works
 
