@@ -7,7 +7,7 @@
   var currentWord = 0;
 
   function nextWord() {
-    currentWord++;
+    currentWord--;
 
     wipeBlock();
     createBlock();
@@ -46,7 +46,7 @@
       wordDiv.insertBefore(exampleBlock, answerBlock);
     }
 
-    if (currentWord < (wordSet.length - 1)) {
+    if (currentWord > 0) {
       let nextButton = document.createElement('button')
       nextButton.setAttribute('class', 'next-button');
       nextButton.id = 'next';
@@ -70,6 +70,7 @@
       if (Object.keys(message).includes('word')) {
         word = message.word;
         wordSet = message.wordSet;
+        currentWord = message.wordSet.length - 1;
         createBlock();
       }
     }
