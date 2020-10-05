@@ -18,7 +18,7 @@ let first = false
 let empty = true
 let typeName = ''
 
-const ignoredHeaders = process.env.IGNORED_HEADERS
+const ignoredHeaders = process.env.IGNORED_HEADERS.split(',')
 
 inputStream.pipe(CsvReadableStream({ 
   parseNumbers: true,
@@ -40,11 +40,11 @@ inputStream.pipe(CsvReadableStream({
       if (ignoredHeaders.includes(row[header])) {
         ignore = true
         empty = false
-      } else if(row[header] === 'Meaning') {
+      } else if(row[header] == 'Meaning') {
         meaning = header
         empty = false
         first = true
-      } else if(row[header] === 'Example') {
+      } else if(row[header] == 'Example') {
         ex = header
         empty = false
         first = true
