@@ -2,7 +2,7 @@
   "name": "__MSG_extName__",
   "version": "1.0.0",
   "default_locale": "en",
-  "description": "Random Japanese Word",
+  "description": "Foreign-Language Vocabulary Study Extension",
   "permissions": [
     "background",
     "notifications",
