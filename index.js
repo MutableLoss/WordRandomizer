@@ -25,18 +25,20 @@ inputStream.pipe(CsvReadableStream({
   parseBooleans: true,
   trim: true
 })).on('data', row => {
-  if (empty && Object.keys(row).length) {
+  const keyList = Object.keys(row)
+
+  if (empty && keyList.length > 1) {
     first = true
   }
 
-  if (!Object.keys(row).length) {
+  if (!keyList.length) {
     empty = true
     ignore = false
   }
 
-  if (empty && Object.keys(row).length) {
+  if (empty && keyList.length > 1) {
     typeName = row[0]
-    for (let header of Object.keys(row)) {
+    for (let header of keyList) {
       if (ignoredHeaders.includes(row[header])) {
         ignore = true
         empty = false
